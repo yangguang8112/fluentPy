@@ -1,8 +1,5 @@
 from array import array
 import math
-from tkinter import N
-
-from numpy import mat
 
 class Vector2d:
     __slots__ = ('__x', '__y')
@@ -54,3 +51,6 @@ class Vector2d:
     
     def angle(self):
         return math.atan2(self.y, self.x)
+    
+    def __add__(self, other):
+        return Vector2d(self.x + other.x, self.y + other.y)
