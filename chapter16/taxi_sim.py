@@ -1,11 +1,7 @@
-from ast import parse
 import collections
 import queue
 import random
 import argparse
-from signal import raise_signal
-import time
-from unittest.mock import DEFAULT
 
 DEFAULT_NUMBER_OF_TAXIS = 3
 DEFAULT_END_TIME = 180
