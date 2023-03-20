@@ -2,18 +2,24 @@ from concurrent import futures
 from tqdm import tqdm
 
 
-def ceshirun():
+def ceshirun(num):
     while True:
-        pass
+        num += 1
+        # print(num)
 
 
-with futures.ThreadPoolExecutor(max_workers=5) as executor:
-    to_do = []
-    for _ in range(5):
-        future = executor.submit(ceshirun())
-        to_do.append(future)
-    done_iter = futures.as_completed(to_do)
-    done_iter = tqdm(done_iter, total=10000)
-    for index, future in enumerate(done_iter):
-        pass
+with futures.ThreadPoolExecutor(max_workers=2) as executor:
+    todo = []
+    for i in range(3):
+        future = executor.submit(ceshirun, i)
+        todo.append(future)
+        msg = 'Scheduled for {}: {}'
+        print(msg.format(i, future))
+    results = []
+    for future in futures.as_completed(todo):
+        res = future.result()
+        msg = '{} result: {!r}'
+        print(msg.format(future, res))
+        results.append(res)
+    print(results)
 
