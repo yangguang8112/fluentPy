@@ -21,10 +21,10 @@ def loiter(n):
 def main():
     display('Script starting.')
     executor = futures.ThreadPoolExecutor(max_workers=3)
-    results = executor.map(loiter, [10, 2, 3, 4, 5])
+    results = executor.map(loiter, [0, 2, 3, 4, 5])
     display('results:', results)
     display('Waiting for individual results:')
-    for i, results in enumerate(results):
+    for i, result in enumerate(results):
         display('result {}: {}'.format(i, result))
 
 
